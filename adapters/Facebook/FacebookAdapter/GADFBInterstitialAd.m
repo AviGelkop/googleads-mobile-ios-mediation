@@ -80,8 +80,9 @@
   }
 
   _interstitialAd.delegate = _adapterDelegate;
-  [FBAdSettings setMediationService:[NSString
-      stringWithFormat:@"GOOGLE_%@:%@", [GADRequest sdkVersion], kGADMAdapterFacebookVersion]];
+  [FBAdSettings
+      setMediationService:[NSString stringWithFormat:@"GOOGLE_%@:%@", [GADRequest sdkVersion],
+                                                     kGADMAdapterFacebookVersion]];
   [_interstitialAd loadAd];
 }
 

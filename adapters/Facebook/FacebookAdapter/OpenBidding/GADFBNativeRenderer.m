@@ -13,16 +13,14 @@
 // limitations under the License.
 
 #import "GADFBNativeRenderer.h"
-#import <FBAudienceNetwork/FBAudienceNetwork.h>
 #import <AdSupport/AdSupport.h>
+#import <FBAudienceNetwork/FBAudienceNetwork.h>
 
 #import "GADFBError.h"
 #import "GADFBExtraAssets.h"
 #import "GADFBNetworkExtras.h"
 #import "GADMAdapterFacebookConstants.h"
 #import "GADMediationAdapterFacebook.h"
-
-static NSString *const GADUnifiedNativeAdIconView = @"3003";
 
 @interface GADFBNativeRenderer () <GADMediationNativeAd, FBNativeAdDelegate, FBMediaViewDelegate> {
   // The completion handler to call when the ad loading succeeds or fails.
@@ -204,11 +202,7 @@ static NSString *const GADUnifiedNativeAdIconView = @"3003";
         (NSDictionary<GADUnifiedNativeAssetIdentifier, UIView *> *)nonclickableAssetViews
             viewController:(UIViewController *)viewController {
   NSArray *assets = clickableAssetViews.allValues;
-  UIView *iconView;
-
-  if ([view isKindOfClass:[GADUnifiedNativeAdView class]]) {
-    iconView = [clickableAssetViews valueForKey:GADUnifiedNativeAdIconView];
-  }
+  UIImageView *iconView = (UIImageView *)[clickableAssetViews valueForKey:kGADUnifiedNativeAdIconView];
 
   if (assets.count > 0 && iconView) {
     [_nativeAd registerViewForInteraction:view

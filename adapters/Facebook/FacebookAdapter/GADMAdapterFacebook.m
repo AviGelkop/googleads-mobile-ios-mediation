@@ -20,9 +20,8 @@
 #import "GADFBBannerAd.h"
 #import "GADFBError.h"
 #import "GADFBInterstitialAd.h"
-#import "GADFBNativeAd.h"
+#import "GADFBNativeAdBase.h"
 #import "GADFBNetworkExtras.h"
-#import "GADFBUnifiedNativeAd.h"
 #import "GADMAdapterFacebookConstants.h"
 #import "GADMediationAdapterFacebook.h"
 
@@ -37,10 +36,7 @@
   GADFBInterstitialAd *_interstitialAd;
 
   /// Facebook Audience Network native ad wrapper.
-  GADFBNativeAd *_nativeAd;
-
-  /// Facebook Audience Network native ad wrapper.
-  GADFBUnifiedNativeAd *_unifiedNativeAd;
+  GADFBNativeAdBase *_nativeAdBase;
 }
 @end
 
@@ -59,16 +55,12 @@
 }
 
 - (instancetype)initWithGADMAdNetworkConnector:(id<GADMAdNetworkConnector>)connector {
-  if (![[GADMobileAds sharedInstance] isSDKVersionAtLeastMajor:7 minor:12 patch:0]) {
-    NSLog(@"Unsupported SDK. GoogleMobileAds SDK version 7.12.0 or higher is required.");
+  if (![[GADMobileAds sharedInstance] isSDKVersionAtLeastMajor:7 minor:42 patch:2]) {
+    NSLog(@"Unsupported SDK. GoogleMobileAds SDK version 7.42.2 or higher is required.");
     return nil;
   }
   self = [self init];
   if (self) {
-    _bannerAd = [[GADFBBannerAd alloc] initWithGADMAdNetworkConnector:connector adapter:self];
-    _interstitialAd = [[GADFBInterstitialAd alloc] initWithGADMAdNetworkConnector:connector
-                                                                          adapter:self];
-    _nativeAd = [[GADFBNativeAd alloc] initWithGADMAdNetworkConnector:connector adapter:self];
     _connector = connector;
   }
   return self;
@@ -80,6 +72,8 @@
       [strongConnector childDirectedTreatment]) {
     [FBAdSettings setIsChildDirected:[[strongConnector childDirectedTreatment] boolValue]];
   }
+
+  _bannerAd = [[GADFBBannerAd alloc] initWithGADMAdNetworkConnector:strongConnector adapter:self];
   [_bannerAd getBannerWithSize:adSize];
 }
 
@@ -89,6 +83,9 @@
       [strongConnector childDirectedTreatment]) {
     [FBAdSettings setIsChildDirected:[[strongConnector childDirectedTreatment] boolValue]];
   }
+
+  _interstitialAd = [[GADFBInterstitialAd alloc] initWithGADMAdNetworkConnector:strongConnector
+                                                                        adapter:self];
   [_interstitialAd getInterstitial];
 }
 
@@ -102,20 +99,15 @@
       [strongConnector childDirectedTreatment]) {
     [FBAdSettings setIsChildDirected:[strongConnector childDirectedTreatment].boolValue];
   }
-  if ([adTypes containsObject:kGADAdLoaderAdTypeUnifiedNative]) {
-    _unifiedNativeAd = [[GADFBUnifiedNativeAd alloc] initWithGADMAdNetworkConnector:strongConnector
-                                                                            adapter:self];
-    [_unifiedNativeAd getNativeAdWithAdTypes:adTypes options:options];
-  } else {
-    _nativeAd = [[GADFBNativeAd alloc] initWithGADMAdNetworkConnector:strongConnector adapter:self];
-    [_nativeAd getNativeAdWithAdTypes:adTypes options:options];
-  }
+  _nativeAdBase = [[GADFBNativeAdBase alloc] initWithGADMAdNetworkConnector:strongConnector
+                                                                    adapter:self];
+  [_nativeAdBase getNativeAdWithAdTypes:adTypes options:options];
 }
 
 - (void)stopBeingDelegate {
   [_bannerAd stopBeingDelegate];
   [_interstitialAd stopBeingDelegate];
-  [_nativeAd stopBeingDelegate];
+  [_nativeAdBase stopBeingDelegate];
 }
 
 - (BOOL)isBannerAnimationOK:(GADMBannerAnimationType)animType {

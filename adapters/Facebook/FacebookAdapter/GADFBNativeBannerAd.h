@@ -1,4 +1,4 @@
-// Copyright 2016 Google Inc.
+// Copyright 2019 Google LLC.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,12 +13,12 @@
 // limitations under the License.
 
 #import <Foundation/Foundation.h>
-#import <GoogleMobileAds/GoogleMobileAds.h>
+#import "GADFBNativeAdBase.h"
 
-/// Network extras for the Facebook adapter.
-@interface GADFBNetworkExtras : NSObject<GADAdNetworkExtras>
+@protocol GADMAdNetworkAdapter;
+@protocol GADMAdNetworkConnector;
 
-/// Indicates whether the request is for a native banner ad.
-@property(nonatomic, assign) BOOL requestNativeBanner;
+/// Creates and manages Facebook Audience Network native banner ads.
+@interface GADFBNativeBannerAd : GADFBNativeAdBase
 
 @end

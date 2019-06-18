@@ -13,15 +13,15 @@
 // limitations under the License.
 
 #import "GADMediationAdapterFacebook.h"
+#import <FBAudienceNetwork/FBAudienceNetwork.h>
 #import "GADFBBannerRenderer.h"
 #import "GADFBError.h"
 #import "GADFBInterstitialRenderer.h"
 #import "GADFBNativeRenderer.h"
 #import "GADFBNetworkExtras.h"
 #import "GADFBRewardedRenderer.h"
-#import "GADMAdapterFacebookConstants.h"
 #import "GADMAdapterFacebook.h"
-#import <FBAudienceNetwork/FBAudienceNetwork.h>
+#import "GADMAdapterFacebookConstants.h"
 
 @interface GADMediationAdapterFacebook () {
   /// Facebook Audience Network rewarded ad wrapper.
@@ -49,7 +49,8 @@
   }
   FBAdInitSettings *fbSettings = [[FBAdInitSettings alloc]
       initWithPlacementIDs:[placementIds allObjects]
-          mediationService:[NSString stringWithFormat:@"GOOGLE_%@:%@", [GADRequest sdkVersion], kGADMAdapterFacebookVersion]];
+          mediationService:[NSString stringWithFormat:@"GOOGLE_%@:%@", [GADRequest sdkVersion],
+                                                      kGADMAdapterFacebookVersion]];
 
   [FBAudienceNetworkAds
       initializeWithSettings:fbSettings

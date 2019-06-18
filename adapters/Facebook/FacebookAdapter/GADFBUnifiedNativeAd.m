@@ -14,16 +14,14 @@
 
 #import "GADFBUnifiedNativeAd.h"
 
-#import <GoogleMobileAds/GoogleMobileAds.h>
 #import <FBAudienceNetwork/FBAudienceNetwork.h>
+#import <GoogleMobileAds/GoogleMobileAds.h>
 
 #import "GADFBAdapterDelegate.h"
 #import "GADFBError.h"
 #import "GADFBExtraAssets.h"
 #import "GADFBNetworkExtras.h"
 #import "GADMAdapterFacebookConstants.h"
-
-static NSString *const GADUnifiedNativeAdIconView = @"3003";
 
 @interface GADFBUnifiedNativeAd () <GADMediatedUnifiedNativeAd,
                                     GADMediatedNativeAdDelegate,
@@ -74,7 +72,7 @@ static NSString *const GADUnifiedNativeAdIconView = @"3003";
 
 - (instancetype)initWithGADMAdNetworkConnector:(id<GADMAdNetworkConnector>)connector
                                        adapter:(id<GADMAdNetworkAdapter>)adapter {
-  self = [super init];
+  self = [super initWithGADMAdNetworkConnector:connector adapter:adapter];
   if (self) {
     _adapter = adapter;
     _connector = connector;
@@ -107,6 +105,11 @@ static NSString *const GADUnifiedNativeAdIconView = @"3003";
     [strongConnector adapter:strongAdapter didFailAd:error];
     return;
   }
+
+  [FBAdSettings
+      setMediationService:[NSString stringWithFormat:@"GOOGLE_%@:%@", [GADRequest sdkVersion],
+                                                     kGADMAdapterFacebookVersion]];
+
   _nativeAd = [[FBNativeAd alloc] initWithPlacementID:placementID];
 
   if (!_nativeAd) {
@@ -117,8 +120,6 @@ static NSString *const GADUnifiedNativeAdIconView = @"3003";
     return;
   }
   _nativeAd.delegate = self;
-  [FBAdSettings setMediationService:[NSString
-      stringWithFormat:@"GOOGLE_%@:%@", [GADRequest sdkVersion], kGADMAdapterFacebookVersion]];
   [_nativeAd loadAd];
 }
 
@@ -152,7 +153,8 @@ static NSString *const GADUnifiedNativeAdIconView = @"3003";
     [_adOptionsView addConstraint:width];
     [_adOptionsView updateConstraints];
   }
-    _adOptionsView.nativeAd = _nativeAd;
+
+  _adOptionsView.nativeAd = _nativeAd;
 }
 
 #pragma mark - GADMediatedNativeAd
@@ -266,7 +268,8 @@ static NSString *const GADUnifiedNativeAdIconView = @"3003";
         (NSDictionary<GADUnifiedNativeAssetIdentifier, UIView *> *)nonclickableAssetViews
             viewController:(UIViewController *)viewController {
   NSArray *assets = clickableAssetViews.allValues;
-  UIView *iconView = [clickableAssetViews valueForKey:GADUnifiedNativeAdIconView];
+  UIImageView *iconView =
+      (UIImageView *)[clickableAssetViews valueForKey:kGADUnifiedNativeAdIconView];
 
   if (assets.count > 0 && iconView) {
     [_nativeAd registerViewForInteraction:view
@@ -280,7 +283,6 @@ static NSString *const GADUnifiedNativeAdIconView = @"3003";
                             iconImageView:iconView
                            viewController:viewController];
   }
-  _adOptionsView.nativeAd = _nativeAd;
 }
 
 - (void)didUntrackView:(UIView *)view {
@@ -321,6 +323,7 @@ static NSString *const GADUnifiedNativeAdIconView = @"3003";
 
 - (void)nativeAdDidClick:(FBNativeAd *)nativeAd {
   [GADMediatedNativeAdNotificationSource mediatedNativeAdDidRecordClick:self];
+  [GADMediatedNativeAdNotificationSource mediatedNativeAdWillLeaveApplication:self];
 }
 
 - (void)nativeAdDidFinishHandlingClick:(FBNativeAd *)nativeAd {

@@ -13,11 +13,11 @@
 // limitations under the License.
 
 #import "GADFBBannerRenderer.h"
+#import <AdSupport/AdSupport.h>
+#import <FBAudienceNetwork/FBAudienceNetwork.h>
 #import "GADFBError.h"
 #import "GADMAdapterFacebookConstants.h"
 #import "GADMediationAdapterFacebook.h"
-#import <FBAudienceNetwork/FBAudienceNetwork.h>
-#import <AdSupport/AdSupport.h>
 
 @interface GADFBBannerRenderer () <GADMediationBannerAd, FBAdViewDelegate> {
   // The completion handler to call when the ad loading succeeds or fails.

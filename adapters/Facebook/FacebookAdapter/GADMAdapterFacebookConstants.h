@@ -18,3 +18,5 @@ static NSString *const kGADMAdapterFacebookVersion = @"5.4.0.0";
 static NSString *const kGADMAdapterFacebookOpenBiddingPubID = @"placement_id";
 
 static NSString *const kGADMAdapterFacebookPubID = @"pubid";
+
+static NSString *const kGADUnifiedNativeAdIconView = @"3003";

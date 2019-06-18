@@ -1,5 +1,8 @@
 # Facebook Audience Network Mediation Adapter for Google Mobile Ads SDK for iOS
 
+## Next Version
+- Added support for Facebook's native banner ads.
+
 ## Version 5.4.0.0
 - Verified compatibility with FAN SDK 5.4.0.
 
