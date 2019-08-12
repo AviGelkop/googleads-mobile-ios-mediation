@@ -1,0 +1,389 @@
+[
+  {
+    "networkName": "AdColony",
+    "networkSdkClass": "AdColony",
+    "adapters": [
+      {
+        "name": "Interstitial",
+        "adapterClass": "GADMAdapterAdColony",
+        "serverParameters": {
+          "App ID": "app_id",
+          "Zone ID": "zone_ids"
+        }
+      },
+      {
+        "name": "Rewarded Video",
+        "adapterClass": "GADMAdapterAdColony",
+        "serverParameters": {
+          "App ID": "app_id",
+          "Zone ID": "zone_ids"
+        }
+      }
+    ]
+  },
+  {
+    "networkName": "Facebook Audience Network",
+    "networkSdkClass": "FBAdView",
+    "adapters": [
+      {
+        "name": "Banner",
+        "adapterClass": "GADMAdapterFacebook",
+        "serverParameters": {
+          "Placement ID": "pubid"
+        }
+      },
+      {
+        "name": "Interstitial",
+        "adapterClass": "GADMAdapterFacebook",
+        "serverParameters": {
+          "Placement ID": "pubid"
+        }
+      },
+      {
+        "name": "Rewarded Video",
+        "adapterClass": "GADMAdapterFacebook",
+        "serverParameters": {
+          "Placement ID": "pubid"
+        }
+      },
+      {
+        "name": "Native",
+        "adapterClass": "GADMAdapterFacebook",
+        "serverParameters": {
+          "Placement ID": "pubid"
+        }
+      }
+    ]
+  },
+  {
+    "networkName": "AdMob",
+    "networkSdkClass": "GADMobileAds",
+    "adapters": [
+      {
+        "name": "Banner",
+        "adapterClass": "GADMAdapterGoogleAdMobAds",
+        "serverParameters": {}
+      },
+      {
+        "name": "Interstitial",
+        "adapterClass": "GADMAdapterGoogleAdMobAds",
+        "serverParameters": {}
+      },
+      {
+        "name": "Rewarded Video",
+        "adapterClass": "GADMAdapterGoogleAdMobAds",
+        "serverParameters": {}
+      },
+      {
+        "name": "Native",
+        "adapterClass": "GADMAdapterGoogleAdMobAds",
+        "serverParameters": {}
+      }
+    ]
+  },
+  {
+    "networkName": "AppLovin",
+    "networkSdkClass": "ALSdk",
+    "adapters": [
+      {
+        "name": "Banner",
+        "adapterClass": "GADMAdapterAppLovin",
+        "serverParameters": {
+          "Bundle ID": "bundleId",
+          "SDK Key": "sdkKey",
+          "Zone ID": "zone_id"
+        }
+      },
+      {
+        "name": "Interstitial",
+        "adapterClass": "GADMAdapterAppLovin",
+        "serverParameters": {
+          "Bundle ID": "bundleId",
+          "SDK Key": "sdkKey",
+          "Zone ID": "zone_id"
+        }
+      },
+      {
+        "name": "Rewarded Video",
+        "adapterClass": "GADMAdapterAppLovinRewardBasedVideoAd",
+        "serverParameters": {
+          "Bundle ID": "bundleId",
+          "SDK Key": "sdkKey",
+          "Zone ID": "zone_id"
+        }
+      },
+      {
+        "name": "Native",
+        "adapterClass": "GADMAdapterAppLovinNative",
+        "serverParameters": {
+          "Bundle ID": "bundleId",
+          "SDK Key": "sdkKey",
+          "Zone ID": "zone_id"
+        }
+      }
+    ]
+  },
+  {
+    "networkName": "Chartboost",
+    "networkSdkClass": "Chartboost",
+    "adapters": [
+      {
+        "name": "Interstitial",
+        "adapterClass": "GADMAdapterChartboost",
+        "serverParameters": {
+          "App ID": "appId",
+          "App Signature": "appSignature",
+          "Ad Location": "adLocation"
+        }
+      },
+      {
+        "name": "Rewarded Video",
+        "adapterClass": "GADMAdapterChartboost",
+        "serverParameters": {
+          "App ID": "appId",
+          "App Signature": "appSignature",
+          "Ad Location": "adLocation"
+        }
+      }
+    ]
+  },
+  {
+    "networkName": "InMobi",
+    "networkSdkClass": "IMSdk",
+    "adapters": [
+      {
+        "name": "Banner",
+        "adapterClass": "GADMAdapterInMobi",
+        "serverParameters": {
+          "Account ID": "accountid",
+          "Placement ID": "placementid"
+        }
+      },
+      {
+        "name": "Interstitial",
+        "adapterClass": "GADMAdapterInMobi",
+        "serverParameters": {
+          "Account ID": "accountid",
+          "Placement ID": "placementid"
+        }
+      },
+      {
+        "name": "Rewarded Video",
+        "adapterClass": "GADMAdapterInMobi",
+        "serverParameters": {
+          "Account ID": "accountid",
+          "Placement ID": "placementid"
+        }
+      },
+      {
+        "name": "Native",
+        "adapterClass": "GADMAdapterInMobi",
+        "serverParameters": {
+          "Account ID": "accountid",
+          "Placement ID": "placementid"
+        }
+      }
+    ]
+  },
+  {
+    "networkName": "MoPub",
+    "networkSdkClass": "MoPub",
+    "adapters": [
+      {
+        "name": "Banner",
+        "adapterClass": "GADMAdapterMoPub",
+        "serverParameters": {
+          "Ad Unit ID": "pubid"
+        }
+      },
+      {
+        "name": "Interstitial",
+        "adapterClass": "GADMAdapterMoPub",
+        "serverParameters": {
+          "Ad Unit ID": "pubid"
+        }
+      },
+      {
+        "name": "Native",
+        "adapterClass": "GADMAdapterMoPub",
+        "serverParameters": {
+          "Ad Unit ID": "pubid"
+        }
+      }
+    ]
+  },
+  {
+    "networkName": "Tapjoy",
+    "networkSdkClass": "Tapjoy",
+    "adapters": [
+      {
+        "name": "Interstitial",
+        "adapterClass": "GADMAdapterTapjoy",
+        "serverParameters": {
+          "SDK Key": "sdkKey",
+          "Placement Name": "placementName"
+        }
+      },
+      {
+        "name": "Rewarded Video",
+        "adapterClass": "GADMAdapterTapjoy",
+        "serverParameters": {
+          "SDK Key": "sdkKey",
+          "Placement Name": "placementName"
+        }
+      }
+    ]
+  },
+  {
+    "networkName": "Unity Ads",
+    "networkSdkClass": "UnityAds",
+    "adapters": [
+      {
+        "name": "Interstitial",
+        "adapterClass": "GADMAdapterUnity",
+        "serverParameters": {
+          "Game ID": "gameId",
+          "Placement ID": "zoneId"
+        }
+      },
+      {
+        "name": "Rewarded Video",
+        "adapterClass": "GADMAdapterUnity",
+        "serverParameters": {
+          "Game ID": "gameId",
+          "Placement ID": "zoneId"
+        }
+      }
+    ]
+  },
+  {
+    "networkName": "Nend",
+    "networkSdkClass": "NADView",
+    "adapters": [
+      {
+        "name": "Banner",
+        "adapterClass": "GADMAdapterNend",
+        "serverParameters": {
+          "Spot ID": "spotId",
+          "API Key": "apiKey"
+        }
+      },
+      {
+        "name": "Interstitial",
+        "adapterClass": "GADMAdapterNend",
+        "serverParameters": {
+          "Spot ID": "spotId",
+          "API Key": "apiKey"
+        }
+      },
+      {
+        "name": "Rewarded Video",
+        "adapterClass": "GADMAdapterNendRewarded",
+        "serverParameters": {
+          "Spot ID": "spotId",
+          "API Key": "apiKey"
+        }
+      }
+    ]
+  },
+  {
+    "networkName": "Vungle",
+    "networkSdkClass": "VungleSDK",
+    "adapters": [
+      {
+        "name": "Interstitial",
+        "adapterClass": "GADMAdapterVungleInterstitial",
+        "serverParameters": {
+          "Application ID": "application_id",
+          "Placement Reference ID": "placementID"
+        }
+      },
+      {
+        "name": "Rewarded Video",
+        "adapterClass": "GADMAdapterVungleRewardBasedVideoAd",
+        "serverParameters": {
+          "Application ID": "application_id",
+          "Placement Reference ID": "placementID"
+        }
+      }
+    ]
+  },
+  {
+    "networkName": "myTarget",
+    "networkSdkClass": "MTRGAdView",
+    "adapters": [
+      {
+        "name": "Banner",
+        "adapterClass": "GADMAdapterMyTarget",
+        "serverParameters": {
+          "Slot ID": "slotId"
+        }
+      },
+      {
+        "name": "Interstitial",
+        "adapterClass": "GADMAdapterMyTarget",
+        "serverParameters": {
+          "Slot ID": "slotId"
+        }
+      },
+      {
+        "name": "Rewarded Video",
+        "adapterClass": "GADMAdapterMyTargetRewarded",
+        "serverParameters": {
+          "Slot ID": "slotId"
+        }
+      },
+      {
+        "name": "Native",
+        "adapterClass": "GADMAdapterMyTargetNative",
+        "serverParameters": {
+          "Slot ID": "slotId"
+        }
+      }
+    ]
+  },
+  {
+    "networkName": "maio",
+    "networkSdkClass": "Maio",
+    "adapters": [
+      {
+        "name": "Interstitial",
+        "adapterClass": "GADMMaioInterstitialAdapter",
+        "serverParameters": {
+          "Media ID": "mediaId",
+          "Zone ID": "zoneId"
+        }
+      },
+      {
+        "name": "Rewarded Video",
+        "adapterClass": "GADMMaioRewardedAdapter",
+        "serverParameters": {
+          "Media ID": "mediaId",
+          "Zone ID": "zoneId"
+        }
+      }
+    ]
+  },
+  {
+    "networkName": "IronSource",
+    "networkSdkClass": "IronSource",
+    "adapters": [
+      {
+        "name": "Interstitial",
+        "adapterClass": "GADMAdapterIronSource",
+        "serverParameters": {
+          "App Key": "appKey",
+          "Instance ID": "instanceId"
+        }
+      },
+      {
+        "name": "Rewarded Video",
+        "adapterClass": "GADMAdapterIronSourceRewarded",
+        "serverParameters": {
+          "App Key": "appKey",
+          "Instance ID": "instanceId"
+        }
+      }
+    ]
+  }
+]

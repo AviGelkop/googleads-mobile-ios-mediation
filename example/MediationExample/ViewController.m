@@ -21,6 +21,7 @@
 
 @import GoogleMobileAds;
 @import SampleAdSDK;
+@import GoogleMobileAdsMediationTestSuite;
 
 #import "AdSourceConfig.h"
 #import "ExampleUnifiedNativeAdView.h"
@@ -68,6 +69,10 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+    
+//    [GoogleMobileAdsMediationTestSuite presentWithAppID:@"ca-app-pub-4717668825439871~6052650769"//@"4717668825439871"
+//                                       onViewController:self
+//                                               delegate:nil];
   self.title = self.config.title;
 
   self.bannerAdView.adUnitID = self.config.bannerAdUnitID;

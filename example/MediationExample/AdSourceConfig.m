@@ -25,7 +25,7 @@
 NSString *const kCustomEventBannerAdUnitID = @"ca-app-pub-3940256099942544/2493674513";
 NSString *const kCustomEventInterstitialAdUnitID = @"ca-app-pub-3940256099942544/3970407716";
 NSString *const kCustomEventNativeAdUnitID = @"ca-app-pub-3940256099942544/2099734914";
-NSString *const kAdapterBannerAdUnitID = @"ca-app-pub-3940256099942544/5855720519";
+NSString *const kAdapterBannerAdUnitID = @"ca-app-pub-4717668825439871/8487242411"; //changed
 NSString *const kAdapterInterstitialAdUnitID = @"ca-app-pub-3940256099942544/8809186917";
 NSString *const kAdapterNativeAdUnitID = @"ca-app-pub-3940256099942544/2239335711";
 NSString *const kCustomEventSwiftBannerAdUnitID = @"ca-app-pub-3940256099942544/5878320677";

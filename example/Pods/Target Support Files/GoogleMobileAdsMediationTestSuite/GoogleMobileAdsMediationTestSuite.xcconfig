@@ -1,0 +1,10 @@
+CONFIGURATION_BUILD_DIR = ${PODS_CONFIGURATION_BUILD_DIR}/GoogleMobileAdsMediationTestSuite
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current" "${PODS_ROOT}/GoogleAppMeasurement/Frameworks" "${PODS_ROOT}/GoogleMobileAdsMediationTestSuite/Framework"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/GoogleUtilities" "${PODS_ROOT}/Headers/Public/MDFInternationalization" "${PODS_ROOT}/Headers/Public/MDFTextAccessibility" "${PODS_ROOT}/Headers/Public/MaterialComponents" "${PODS_ROOT}/Headers/Public/nanopb"
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_ROOT = ${SRCROOT}
+PODS_TARGET_SRCROOT = ${PODS_ROOT}/GoogleMobileAdsMediationTestSuite
+PRODUCT_BUNDLE_IDENTIFIER = org.cocoapods.${PRODUCT_NAME:rfc1034identifier}
+SKIP_INSTALL = YES

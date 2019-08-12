@@ -25,6 +25,7 @@
 				451277C1207DA8E700D85E57 /* Framework Script */,
 			);
 			dependencies = (
+				2A49BA19230192E7006C30AF /* PBXTargetDependency */,
 			);
 			name = Framework;
 			productName = Framework;
@@ -43,7 +44,19 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		451277C4207DAD8000D85E57 /* FyberAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4512777E207D92C100D85E57 /* FyberAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2A49B9EF23018A74006C30AF /* GADMediationAdapterFyber.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A49B9ED23018A73006C30AF /* GADMediationAdapterFyber.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2A49B9F023018A74006C30AF /* GADMediationAdapterFyber.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A49B9EE23018A74006C30AF /* GADMediationAdapterFyber.m */; };
+		2A49B9FB23018AA9006C30AF /* IASDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A49B9F223018AA9006C30AF /* IASDKCore.framework */; };
+		2A49B9FC23018AA9006C30AF /* IASDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2A49B9F323018AA9006C30AF /* IASDKResources.bundle */; };
+		2A49B9FD23018AA9006C30AF /* IASDKNative.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A49B9F423018AA9006C30AF /* IASDKNative.framework */; };
+		2A49B9FE23018AA9006C30AF /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A49B9F523018AA9006C30AF /* GoogleAppMeasurement.framework */; };
+		2A49B9FF23018AA9006C30AF /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A49B9F623018AA9006C30AF /* GoogleUtilities.framework */; };
+		2A49BA0023018AA9006C30AF /* IASDKMRAID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A49B9F723018AA9006C30AF /* IASDKMRAID.framework */; };
+		2A49BA0123018AA9006C30AF /* IASDKVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A49B9F823018AA9006C30AF /* IASDKVideo.framework */; };
+		2A49BA0223018AA9006C30AF /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A49B9F923018AA9006C30AF /* nanopb.framework */; };
+		2A49BA0323018AA9006C30AF /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A49B9FA23018AA9006C30AF /* GoogleMobileAds.framework */; };
+		2A49BA1B2301953A006C30AF /* FyberAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A49BA1A2301953A006C30AF /* FyberAdapter.h */; };
+		2A49BA2A2301A147006C30AF /* FyberAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A49BA292301A147006C30AF /* FyberAdapter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +66,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 00DD264922F1097C0039C1D4;
 			remoteInfo = ValidateSourceCode;
+		};
+		2A49BA18230192E7006C30AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45127773207D92C100D85E57 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4512777A207D92C100D85E57;
+			remoteInfo = Adapter;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -70,8 +90,20 @@
 
 /* Begin PBXFileReference section */
 		00DD265022F109970039C1D4 /* Script_Validate.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = Script_Validate.sh; sourceTree = "<group>"; };
+		2A49B9ED23018A73006C30AF /* GADMediationAdapterFyber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMediationAdapterFyber.h; sourceTree = "<group>"; };
+		2A49B9EE23018A74006C30AF /* GADMediationAdapterFyber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADMediationAdapterFyber.m; sourceTree = "<group>"; };
+		2A49B9F223018AA9006C30AF /* IASDKCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IASDKCore.framework; path = Drop_Framework_And_Headers/IASDKCore/IASDKCore.framework; sourceTree = "<group>"; };
+		2A49B9F323018AA9006C30AF /* IASDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = IASDKResources.bundle; path = Drop_Framework_And_Headers/IASDKCore/IASDKResources.bundle; sourceTree = "<group>"; };
+		2A49B9F423018AA9006C30AF /* IASDKNative.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IASDKNative.framework; path = Drop_Framework_And_Headers/IASDKNative/IASDKNative.framework; sourceTree = "<group>"; };
+		2A49B9F523018AA9006C30AF /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Drop_Framework_And_Headers/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
+		2A49B9F623018AA9006C30AF /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Drop_Framework_And_Headers/GoogleUtilities.framework; sourceTree = "<group>"; };
+		2A49B9F723018AA9006C30AF /* IASDKMRAID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IASDKMRAID.framework; path = Drop_Framework_And_Headers/IASDKMRAID/IASDKMRAID.framework; sourceTree = "<group>"; };
+		2A49B9F823018AA9006C30AF /* IASDKVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IASDKVideo.framework; path = Drop_Framework_And_Headers/IASDKVideo/IASDKVideo.framework; sourceTree = "<group>"; };
+		2A49B9F923018AA9006C30AF /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Drop_Framework_And_Headers/nanopb.framework; sourceTree = "<group>"; };
+		2A49B9FA23018AA9006C30AF /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Drop_Framework_And_Headers/GoogleMobileAds.framework; sourceTree = "<group>"; };
+		2A49BA1A2301953A006C30AF /* FyberAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FyberAdapter.h; sourceTree = "<group>"; };
+		2A49BA292301A147006C30AF /* FyberAdapter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FyberAdapter.framework; path = Library/FyberAdapter.framework; sourceTree = "<group>"; };
 		4512777B207D92C100D85E57 /* libAdapter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAdapter.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		4512777E207D92C100D85E57 /* FyberAdapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FyberAdapter.h; sourceTree = "<group>"; };
 		4512779E207D973000D85E57 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4512779F207D976300D85E57 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		451277A1207D984F00D85E57 /* Script_Library.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = Script_Library.sh; sourceTree = "<group>"; };
@@ -89,12 +121,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A49B9FB23018AA9006C30AF /* IASDKCore.framework in Frameworks */,
+				2A49B9FD23018AA9006C30AF /* IASDKNative.framework in Frameworks */,
+				2A49BA2A2301A147006C30AF /* FyberAdapter.framework in Frameworks */,
+				2A49B9FE23018AA9006C30AF /* GoogleAppMeasurement.framework in Frameworks */,
+				2A49B9FF23018AA9006C30AF /* GoogleUtilities.framework in Frameworks */,
+				2A49BA0023018AA9006C30AF /* IASDKMRAID.framework in Frameworks */,
+				2A49BA0123018AA9006C30AF /* IASDKVideo.framework in Frameworks */,
+				2A49BA0223018AA9006C30AF /* nanopb.framework in Frameworks */,
+				2A49BA0323018AA9006C30AF /* GoogleMobileAds.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A49B9F123018AA8006C30AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A49BA292301A147006C30AF /* FyberAdapter.framework */,
+				2A49B9F523018AA9006C30AF /* GoogleAppMeasurement.framework */,
+				2A49B9FA23018AA9006C30AF /* GoogleMobileAds.framework */,
+				2A49B9F623018AA9006C30AF /* GoogleUtilities.framework */,
+				2A49B9F223018AA9006C30AF /* IASDKCore.framework */,
+				2A49B9F723018AA9006C30AF /* IASDKMRAID.framework */,
+				2A49B9F423018AA9006C30AF /* IASDKNative.framework */,
+				2A49B9F323018AA9006C30AF /* IASDKResources.bundle */,
+				2A49B9F823018AA9006C30AF /* IASDKVideo.framework */,
+				2A49B9F923018AA9006C30AF /* nanopb.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		45127772207D92C100D85E57 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +163,7 @@
 				4512779F207D976300D85E57 /* CHANGELOG.md */,
 				4512777D207D92C100D85E57 /* FyberAdapter */,
 				4512777C207D92C100D85E57 /* Products */,
+				2A49B9F123018AA8006C30AF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +178,8 @@
 		4512777D207D92C100D85E57 /* FyberAdapter */ = {
 			isa = PBXGroup;
 			children = (
+				2A49B9ED23018A73006C30AF /* GADMediationAdapterFyber.h */,
+				2A49B9EE23018A74006C30AF /* GADMediationAdapterFyber.m */,
 				451277AB207DA59400D85E57 /* README.md */,
 			);
 			path = FyberAdapter;
@@ -157,7 +218,7 @@
 		451277AA207DA40600D85E57 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				4512777E207D92C100D85E57 /* FyberAdapter.h */,
+				2A49BA1A2301953A006C30AF /* FyberAdapter.h */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -169,7 +230,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				451277C4207DAD8000D85E57 /* FyberAdapter.h in Headers */,
+				2A49B9EF23018A74006C30AF /* GADMediationAdapterFyber.h in Headers */,
+				2A49BA1B2301953A006C30AF /* FyberAdapter.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +246,7 @@
 				45127778207D92C100D85E57 /* Frameworks */,
 				45127779207D92C100D85E57 /* CopyFiles */,
 				451277C3207DAD6E00D85E57 /* Headers */,
+				2A49BA20230197AD006C30AF /* Resources */,
 			);
 			buildRules = (
 			);
@@ -227,6 +290,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 45127772207D92C100D85E57;
 			productRefGroup = 4512777C207D92C100D85E57 /* Products */;
@@ -240,6 +304,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2A49BA20230197AD006C30AF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A49B9FC23018AA9006C30AF /* IASDKResources.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		00DD264C22F1097C0039C1D4 /* Validate Source Code */ = {
@@ -268,7 +343,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/BuildScript/Script_Framework.sh\"";
+			shellScript = "\"${SRCROOT}/BuildScript/Script_Framework.sh\"\n";
 		};
 		451277C9207DADD200D85E57 /* Framework Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -291,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A49B9F023018A74006C30AF /* GADMediationAdapterFyber.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,9 +378,33 @@
 			target = 00DD264922F1097C0039C1D4 /* ValidateSourceCode */;
 			targetProxy = 00DD265122F109A80039C1D4 /* PBXContainerItemProxy */;
 		};
+		2A49BA19230192E7006C30AF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4512777A207D92C100D85E57 /* Adapter */;
+			targetProxy = 2A49BA18230192E7006C30AF /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		2A49B9EB23018A39006C30AF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = Framework;
+			};
+			name = Debug;
+		};
+		2A49B9EC23018A39006C30AF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				PRODUCT_NAME = Framework;
+			};
+			name = Release;
+		};
 		45127782207D92C100D85E57 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -429,6 +529,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/Drop_Framework_And_Headers",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Drop_Framework_And_Headers/IASDKCore",
+					"$(PROJECT_DIR)/Drop_Framework_And_Headers/IASDKNative",
+					"$(PROJECT_DIR)/Drop_Framework_And_Headers",
+					"$(PROJECT_DIR)/Drop_Framework_And_Headers/IASDKMRAID",
+					"$(PROJECT_DIR)/Drop_Framework_And_Headers/IASDKVideo",
+					"$(PROJECT_DIR)$(LOCAL_LIBRARY_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -448,14 +554,14 @@
 				MIN_OS_MINOR_VERSION_64_BIT = 0;
 				MODULE_MAP_PATH = "$(SRCROOT)/Public";
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				OUTPUT_FOLDER = "${PROJECT_DIR}/Library";
 				PRODUCT_NAME = Adapter;
 				PUBLIC_HEADERS_FOLDER_PATH = "\"$(SRCROOT)/Public/**\"";
 				SEPERATE_STRIP = YES;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7";
+				VALID_ARCHS = "arm64 armv7 i386";
 			};
 			name = Debug;
 		};
@@ -479,6 +585,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SRCROOT)/Drop_Framework_And_Headers",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Drop_Framework_And_Headers/IASDKCore",
+					"$(PROJECT_DIR)/Drop_Framework_And_Headers/IASDKNative",
+					"$(PROJECT_DIR)/Drop_Framework_And_Headers",
+					"$(PROJECT_DIR)/Drop_Framework_And_Headers/IASDKMRAID",
+					"$(PROJECT_DIR)/Drop_Framework_And_Headers/IASDKVideo",
+					"$(PROJECT_DIR)$(LOCAL_LIBRARY_DIR)",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
@@ -497,14 +609,14 @@
 				MIN_OS_MINOR_VERSION = 0;
 				MIN_OS_MINOR_VERSION_64_BIT = 0;
 				MODULE_MAP_PATH = "$(SRCROOT)/Public";
-				OTHER_LDFLAGS = "";
+				OTHER_LDFLAGS = "-ObjC";
 				OUTPUT_FOLDER = "${PROJECT_DIR}/Library";
 				PRODUCT_NAME = Adapter;
 				PUBLIC_HEADERS_FOLDER_PATH = "\"$(SRCROOT)/Public/**\"";
 				SEPERATE_STRIP = YES;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALID_ARCHS = "arm64 armv7";
+				VALID_ARCHS = "arm64 armv7 i386";
 			};
 			name = Release;
 		};
@@ -735,8 +847,8 @@
 		00DD264D22F1097C0039C1D4 /* Build configuration list for PBXAggregateTarget "ValidateSourceCode" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				00DD264E22F1097C0039C1D4 /* Debug */,
-				00DD264F22F1097C0039C1D4 /* Release */,
+				2A49B9EB23018A39006C30AF /* Debug */,
+				2A49B9EC23018A39006C30AF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -11,6 +11,8 @@
 		26E462F01B87BFE900D2C50F /* SampleCustomEventBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E462ED1B87BFE900D2C50F /* SampleCustomEventBanner.m */; };
 		26E462F11B87BFE900D2C50F /* SampleCustomEventInterstitial.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E462EF1B87BFE900D2C50F /* SampleCustomEventInterstitial.m */; };
 		26E463031B890E8800D2C50F /* SampleCustomEventNativeAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 26E463021B890E8800D2C50F /* SampleCustomEventNativeAd.m */; };
+		2A49BA412301B964006C30AF /* FyberAdapter.xcodeproj in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A49BA382301B5C0006C30AF /* FyberAdapter.xcodeproj */; };
+		2A49BA422301B96A006C30AF /* libAdapter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A49BA402301B5C0006C30AF /* libAdapter.a */; };
 		4A0575BE1C287FFB0085EBE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0575BC1C287FFB0085EBE0 /* main.m */; };
 		4A8B03771C286FDA0052A060 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8B03731C286FDA0052A060 /* LaunchScreen.xib */; };
 		4A8B03781C286FDA0052A060 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A8B03751C286FDA0052A060 /* Main.storyboard */; };
@@ -30,9 +32,17 @@
 		AEC0D12D1F3BC782005B3813 /* SampleAdSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AEC0D12C1F3BC782005B3813 /* SampleAdSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AEC0D12E1F3BC7B9005B3813 /* SampleAdSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEC0D12C1F3BC782005B3813 /* SampleAdSDK.framework */; };
 		AEDDCB2F1F4501BA00BFB33C /* AdSourceConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDDCB2E1F4501B900BFB33C /* AdSourceConfig.m */; };
+		FC49A1046408F4D115B3958E /* libPods-MediationExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F10C68662ED144817F3A57F /* libPods-MediationExample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2A49BA3F2301B5C0006C30AF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A49BA382301B5C0006C30AF /* FyberAdapter.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4512777B207D92C100D85E57;
+			remoteInfo = Adapter;
+		};
 		AE776FC7201AA7990096DF82 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = AE776FC2201AA7990096DF82 /* SampleAdSDK.xcodeproj */;
@@ -79,6 +89,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0F10C68662ED144817F3A57F /* libPods-MediationExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MediationExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		267DA5C71B8BE2F500E6570E /* SampleMediatedNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleMediatedNativeAd.h; path = CustomEvent/SampleMediatedNativeAd.h; sourceTree = "<group>"; };
 		267DA5C81B8BE2F500E6570E /* SampleMediatedNativeAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SampleMediatedNativeAd.m; path = CustomEvent/SampleMediatedNativeAd.m; sourceTree = "<group>"; };
 		26DB16A81BA8E49700CC3C04 /* SampleCustomEventConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SampleCustomEventConstants.h; path = CustomEvent/SampleCustomEventConstants.h; sourceTree = "<group>"; };
@@ -89,6 +100,7 @@
 		26E462EF1B87BFE900D2C50F /* SampleCustomEventInterstitial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SampleCustomEventInterstitial.m; path = CustomEvent/SampleCustomEventInterstitial.m; sourceTree = "<group>"; };
 		26E463011B890E8800D2C50F /* SampleCustomEventNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SampleCustomEventNativeAd.h; path = CustomEvent/SampleCustomEventNativeAd.h; sourceTree = "<group>"; };
 		26E463021B890E8800D2C50F /* SampleCustomEventNativeAd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SampleCustomEventNativeAd.m; path = CustomEvent/SampleCustomEventNativeAd.m; sourceTree = "<group>"; };
+		2A49BA382301B5C0006C30AF /* FyberAdapter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FyberAdapter.xcodeproj; path = ../../adapters/Fyber/FyberAdapter.xcodeproj; sourceTree = "<group>"; };
 		4A0575BB1C287FFB0085EBE0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MediationExample/Info.plist; sourceTree = SOURCE_ROOT; };
 		4A0575BC1C287FFB0085EBE0 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MediationExample/main.m; sourceTree = SOURCE_ROOT; };
 		4A8B03741C286FDA0052A060 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = MediationExample/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
@@ -98,6 +110,8 @@
 		4A93FA481C286D8F00479579 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MediationExample/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		4A93FA501C286D8F00479579 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = MediationExample/ViewController.h; sourceTree = SOURCE_ROOT; };
 		4A93FA511C286D8F00479579 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = MediationExample/ViewController.m; sourceTree = SOURCE_ROOT; };
+		9BAE970BAA64FD9F06BE6BE5 /* Pods-MediationExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationExample.release.xcconfig"; path = "Target Support Files/Pods-MediationExample/Pods-MediationExample.release.xcconfig"; sourceTree = "<group>"; };
+		A5536740AF9DF2FFCFCD774D /* Pods-MediationExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MediationExample.debug.xcconfig"; path = "Target Support Files/Pods-MediationExample/Pods-MediationExample.debug.xcconfig"; sourceTree = "<group>"; };
 		AE2AA9241FC3907100758247 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ExampleUnifiedNativeAdView.xib; sourceTree = "<group>"; };
 		AE2AA9261FC3919100758247 /* ExampleUnifiedNativeAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleUnifiedNativeAdView.m; sourceTree = "<group>"; };
 		AE2AA9271FC3919100758247 /* ExampleUnifiedNativeAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleUnifiedNativeAdView.h; sourceTree = "<group>"; };
@@ -120,8 +134,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A49BA422301B96A006C30AF /* libAdapter.a in Frameworks */,
+				2A49BA412301B964006C30AF /* FyberAdapter.xcodeproj in Frameworks */,
 				AEABBB121F6067BC003BB4D2 /* SampleAdSDKAdapter.framework in Frameworks */,
 				AEC0D12E1F3BC7B9005B3813 /* SampleAdSDK.framework in Frameworks */,
+				FC49A1046408F4D115B3958E /* libPods-MediationExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +154,7 @@
 				AE776FC2201AA7990096DF82 /* SampleAdSDK.xcodeproj */,
 				26E462B31B8693F600D2C50F /* Products */,
 				74DBB23D50D2FE6107613784 /* Frameworks */,
+				61BF922B0A949B22AD89EBC9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,6 +178,7 @@
 				AEDDCB2E1F4501B900BFB33C /* AdSourceConfig.m */,
 				4A93FA501C286D8F00479579 /* ViewController.h */,
 				4A93FA511C286D8F00479579 /* ViewController.m */,
+				2A49BA382301B5C0006C30AF /* FyberAdapter.xcodeproj */,
 				AE5DE0471F3E0F32005C0A1D /* StartViewController.h */,
 				AE5DE0481F3E0F32005C0A1D /* StartViewController.m */,
 				4A8B03751C286FDA0052A060 /* Main.storyboard */,
@@ -186,6 +205,14 @@
 			name = CustomEvent;
 			sourceTree = "<group>";
 		};
+		2A49BA392301B5C0006C30AF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2A49BA402301B5C0006C30AF /* libAdapter.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		4A8B037B1C28702D0052A060 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,11 +222,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		61BF922B0A949B22AD89EBC9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A5536740AF9DF2FFCFCD774D /* Pods-MediationExample.debug.xcconfig */,
+				9BAE970BAA64FD9F06BE6BE5 /* Pods-MediationExample.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		74DBB23D50D2FE6107613784 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				AEABBB111F6067BC003BB4D2 /* SampleAdSDKAdapter.framework */,
 				AEC0D12C1F3BC782005B3813 /* SampleAdSDK.framework */,
+				0F10C68662ED144817F3A57F /* libPods-MediationExample.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -232,10 +269,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26E462D51B8693F600D2C50F /* Build configuration list for PBXNativeTarget "MediationExample" */;
 			buildPhases = (
+				49F90EED40905FFFFFF219A7 /* [CP] Check Pods Manifest.lock */,
 				26E462AE1B8693F600D2C50F /* Sources */,
 				26E462AF1B8693F600D2C50F /* Frameworks */,
 				26E462B01B8693F600D2C50F /* Resources */,
 				AEA5C54B1F3A828A00C96491 /* Embed Frameworks */,
+				499B301CF28770D7E6CB9A88 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -259,6 +298,7 @@
 				TargetAttributes = {
 					26E462B11B8693F600D2C50F = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = 9G2AGGBJ52;
 						LastSwiftMigration = "";
 					};
 				};
@@ -268,6 +308,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -275,6 +316,10 @@
 			productRefGroup = 26E462B31B8693F600D2C50F /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 2A49BA392301B5C0006C30AF /* Products */;
+					ProjectRef = 2A49BA382301B5C0006C30AF /* FyberAdapter.xcodeproj */;
+				},
 				{
 					ProductGroup = AE776FC3201AA7990096DF82 /* Products */;
 					ProjectRef = AE776FC2201AA7990096DF82 /* SampleAdSDK.xcodeproj */;
@@ -288,6 +333,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		2A49BA402301B5C0006C30AF /* libAdapter.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libAdapter.a;
+			remoteRef = 2A49BA3F2301B5C0006C30AF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		AE776FC8201AA7990096DF82 /* SampleAdSDK.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -317,6 +369,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		499B301CF28770D7E6CB9A88 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MediationExample/Pods-MediationExample-resources.sh",
+				"${PODS_ROOT}/VAMP/IASDKCore/IASDKResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IASDKResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MediationExample/Pods-MediationExample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		49F90EED40905FFFFFF219A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MediationExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		26E462AE1B8693F600D2C50F /* Sources */ = {
@@ -471,11 +570,20 @@
 		};
 		26E462D61B8693F600D2C50F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5536740AF9DF2FFCFCD774D /* Pods-MediationExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9G2AGGBJ52;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)/**",
+					"$(PROJECT_DIR)/**",
+					"\"$(SRCROOT)/\"/**",
+					"$(PROJECT_DIR)/MediationExample",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/MediationExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "Google.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MediationExample;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -485,11 +593,20 @@
 		};
 		26E462D71B8693F600D2C50F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9BAE970BAA64FD9F06BE6BE5 /* Pods-MediationExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 9G2AGGBJ52;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)/**",
+					"$(PROJECT_DIR)/**",
+					"\"$(SRCROOT)/\"/**",
+					"$(PROJECT_DIR)/MediationExample",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/MediationExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/\"";
 				PRODUCT_BUNDLE_IDENTIFIER = "Google.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = MediationExample;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
