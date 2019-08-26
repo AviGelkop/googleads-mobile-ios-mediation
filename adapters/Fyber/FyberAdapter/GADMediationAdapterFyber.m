@@ -11,69 +11,81 @@
 
 @import IASDKCore;
 
+static NSString * const _Nonnull kFYBApplicationID = @"applicationId";
+static NSString * const _Nonnull kFYBSpotID = @"spotId";
+
+static NSString * const _Nonnull kFYBBanner = @"kFYBBanner";
+static NSString * const _Nonnull kFYBInterstitial = @"kFYBInterstitial";
+static NSString * const _Nonnull kFYBRewarded = @"kFYBRewarded";
+
+@interface GADMediationAdapterFyber ()
+
+@property (nonatomic, nonnull) id<GADMAdNetworkConnector> connector;
+
+@property (nonatomic, nullable, strong) NSMutableDictionary <NSString *, IAUnitController *> *IAUnitControllers;
+@property (nonatomic, nullable, strong) NSMutableDictionary <NSString *, IAContentController *> *IAContentControllers;
+@property (nonatomic, nullable, strong) NSMutableDictionary <NSString *, IAAdSpot *> *IAAdspots;
+
+@end
+
 @implementation GADMediationAdapterFyber
 
-+ (void)setUpWithConfiguration:(nonnull GADMediationServerConfiguration *)configuration completionHandler:(nonnull GADMediationAdapterSetUpCompletionBlock)completionHandler {
-    if (configuration.credentials.count > 0) {
-        GADMediationCredentials *credentials = configuration.credentials[0];
-        NSString *applicationId = credentials.settings[@"applicationId"];
++ (NSString *)adapterVersion {
+    return @"";
+}
+
++ (Class<GADAdNetworkExtras>)networkExtrasClass {
+    return self.class;
+}
+
+- (instancetype)initWithGADMAdNetworkConnector:(id<GADMAdNetworkConnector>)connector {
+    self = [super init];
+    
+    if (self) {
+        _connector = connector;
+        _IAUnitControllers = [NSMutableDictionary new];
+        _IAContentControllers = [NSMutableDictionary new];
+        _IAAdspots = [NSMutableDictionary new];
+    }
+    
+    if (self.connector) {
+        NSString *appID = [self.connector credentials][kFYBApplicationID];
         
-        if (applicationId) {
-            NSLog(@"Fyber marketplace SDK version: %@", IASDKCore.sharedInstance.version);
-            [IALogger setLogLevel:IALogLevelVerbose];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [IASDKCore.sharedInstance initWithAppID:applicationId];
-                completionHandler(nil);
-            });
+        if (appID) {
+            [[IASDKCore sharedInstance] initWithAppID:appID];
+            [IALogger setLogLevel:IALogLevelInfo];
         } else {
-            completionHandler([NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier] code:0 userInfo:@{NSLocalizedDescriptionKey:@"Fyber marketplace could not initialized, app ID is unknown"}]);
+            NSLog(@"Failed to init Fyber marketplace SDK. Reason: can't get application ID");
         }
     }
+    return self;
 }
 
-+ (GADVersionNumber)version {
-    GADVersionNumber version = {0};
-    version.majorVersion = 1;
-    version.minorVersion = 0;
-    version.patchVersion = 0;
-    return version;
-}
-
-+ (GADVersionNumber)adSDKVersion {
-    GADVersionNumber version = {0};
-    NSArray<NSString*> *components = [[IASDKCore sharedInstance].version componentsSeparatedByString:@"."];
-    if (components.count == 3) {
-        version.majorVersion = components[0].integerValue;
-        version.minorVersion = components[1].integerValue;
-        version.patchVersion = components[2].integerValue;
+- (void)getBannerWithSize:(GADAdSize)adSize {
+    NSString *spotId = [self.connector credentials][kFYBSpotID];
+    if (self.IAAdspots[spotId]) {
+        
     } else {
-        NSLog(@"Unexpected version string: %@. Returning 0 for adSDKVersion.", [IASDKCore sharedInstance].version);
+        [self initSpot:spotId adType:kFYBBanner];
     }
-    return version;
 }
 
-+ (nullable Class<GADAdNetworkExtras>)networkExtrasClass {
-    return nil;
-}
-
-- (void)loadBannerForAdConfiguration:(nonnull GADMediationBannerAdConfiguration *)adConfiguration completionHandler:(nonnull GADMediationBannerLoadCompletionHandler)completionHandler {
-    NSLog(@"");
+- (void)getInterstitial {
 
 }
 
-- (void)loadInterstitialForAdConfiguration:(nonnull GADMediationInterstitialAdConfiguration *)adConfiguration completionHandler:(nonnull GADMediationInterstitialLoadCompletionHandler)completionHandler {
-    NSLog(@"");
-}
-
-- (void)loadRewardedAdForAdConfiguration:(nonnull GADMediationRewardedAdConfiguration *)adConfiguration completionHandler:(nonnull GADMediationRewardedLoadCompletionHandler)completionHandler {
-    NSLog(@"");
-
-}
-
-
-
-+ (void)setUp {
+- (void)stopBeingDelegate {
     
+}
+
+- (void)presentInterstitialFromRootViewController:(UIViewController *)rootViewController {
+    
+}
+
+#pragma mark - Service
+
+- (void)initSpot:(NSString * _Nonnull)spotId adType:(NSString * _Nonnull)adType {
+
 }
 
 @end
