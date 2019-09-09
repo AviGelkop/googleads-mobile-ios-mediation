@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GADMediationAdapterFyber : NSObject <GADMAdNetworkAdapter>
+@interface GADMediationAdapterFyber : NSObject
 
 @end
 
