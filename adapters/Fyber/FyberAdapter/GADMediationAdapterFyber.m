@@ -8,22 +8,19 @@
 
 
 #import "GADMediationAdapterFyber.h"
+#import "GADFYBMediationRewardedAd.h"
 
 @import IASDKCore;
 @import IASDKVideo;
 @import IASDKMRAID;
 @import CoreLocation;
 
-static NSString * const _Nonnull kFYBApplicationID = @"applicationId";
-static NSString * const _Nonnull kFYBSpotID = @"spotId";
-
 typedef NS_ENUM(NSInteger, FYBAdType) {
   FYBAdTypeBanner = 0,
   FYBAdTypeInterstitial = 1,
-  FYBAdTypeRewarded = 2,
 };
 
-@interface GADMediationAdapterFyber () <IAUnitDelegate, GADMediationAdapter, GADMAdNetworkAdapter>
+@interface GADMediationAdapterFyber () <GADMediationAdapter, GADMAdNetworkAdapter, IAUnitDelegate>
 
 @property (nonatomic, nonnull) id<GADMAdNetworkConnector> connector;
 
@@ -34,31 +31,67 @@ typedef NS_ENUM(NSInteger, FYBAdType) {
 @property (nonatomic, strong, nonnull) IAVideoContentController *videoContentController;
 
 @property (nonatomic, strong) IAAdSpot *adSpot;
-@property (nonatomic, weak) IAAdView *adView;
+
+@property (nonatomic, strong, nullable) GADFYBMediationRewardedAd *rewardedAd;
 
 @end
 
 @implementation GADMediationAdapterFyber
 
-+ (NSString *)adapterVersion {
-    return @"";
-}
-
-+ (Class<GADAdNetworkExtras>)networkExtrasClass {
-    return self.class;
-}
+#pragma mark - GADMediationAdapter
 
 + (GADVersionNumber)adSDKVersion {
+    NSString *VAMPVersion = [[IASDKCore sharedInstance] version];
+    NSArray <NSString *> *versionAsArray = [VAMPVersion componentsSeparatedByString:@"."];
     GADVersionNumber version = {0};
+    
+    if (versionAsArray.count == 3) {
+        version.majorVersion = versionAsArray[0].integerValue;
+        version.minorVersion = versionAsArray[1].integerValue;
+        version.patchVersion = versionAsArray[2].integerValue;
+    }
     return version;
 }
 
 
 + (GADVersionNumber)version {
     GADVersionNumber version = {0};
+    
+    version.majorVersion = 1;
+    version.minorVersion = 0;
+    version.patchVersion = 0;
+    
     return version;
 }
 
++ (void)setUpWithConfiguration:(nonnull GADMediationServerConfiguration *)configuration completionHandler:(nonnull GADMediationAdapterSetUpCompletionBlock)completionHandler {
+
+    if (configuration.credentials.count > 0) {
+        GADMediationCredentials *credentials = configuration.credentials[0];
+        NSString *applicationId = credentials.settings[@"applicationId"];
+        
+        if (applicationId) {
+            NSLog(@"Fyber marketplace SDK version: %@", IASDKCore.sharedInstance.version);
+            [IALogger setLogLevel:IALogLevelVerbose];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [IASDKCore.sharedInstance initWithAppID:applicationId];
+                completionHandler(nil);
+            });
+        } else {
+            completionHandler([NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier] code:0 userInfo:@{NSLocalizedDescriptionKey:@"Fyber marketplace could not initialized, app ID is unknown"}]);
+        }
+    }
+}
+
+#pragma mark - GADMAdNetworkAdapter
+
++ (NSString *)adapterVersion {
+    return @"1.0.0";
+}
+
++ (Class<GADAdNetworkExtras>)networkExtrasClass {
+    return nil;
+}
 
 - (instancetype)initWithGADMAdNetworkConnector:(id<GADMAdNetworkConnector>)connector {
     self = [super init];
@@ -67,53 +100,48 @@ typedef NS_ENUM(NSInteger, FYBAdType) {
         _connector = connector;
     }
     
-    if (self.connector) {
-        NSString *appID = [self.connector credentials][kFYBApplicationID];
-        
-        if (appID) {
-            [[IASDKCore sharedInstance] initWithAppID:appID];
-            [IALogger setLogLevel:IALogLevelInfo];
-        } else {
-            NSLog(@"Failed to init Fyber marketplace SDK. Reason: can't get application ID");
-        }
-    }
     return self;
 }
 
 - (void)getBannerWithSize:(GADAdSize)adSize {
-    __weak typeof(self) weakSelf = self;
     NSString *spotId = [self.connector credentials][kFYBSpotID];
     
     [self initSpot:spotId adType:FYBAdTypeBanner];
     [self.adSpot fetchAdWithCompletion:^(IAAdSpot * _Nullable adSpot, IAAdModel * _Nullable adModel, NSError * _Nullable error) {
         if (error) {
-            [weakSelf.connector adapter:weakSelf didFailAd:error];
+            [self.connector adapter:self didFailAd:error];
         } else {
-            [weakSelf.connector adapter:weakSelf didReceiveAdView:weakSelf.viewUnitController.adView];
+            [self.connector adapter:self didReceiveAdView:self.viewUnitController.adView];
         }
     }];
 }
 
 - (void)getInterstitial {
-    __weak typeof(self) weakSelf = self;
     NSString *spotId = [self.connector credentials][kFYBSpotID];
     
     [self initSpot:spotId adType:FYBAdTypeInterstitial];
     [self.adSpot fetchAdWithCompletion:^(IAAdSpot * _Nullable adSpot, IAAdModel * _Nullable adModel, NSError * _Nullable error) {
         if (error) {
-            [weakSelf.connector adapter:weakSelf didFailAd:error];
+            [self.connector adapter:self didFailAd:error];
         } else {
-            [weakSelf.connector adapterDidReceiveInterstitial:weakSelf];
+            [self.connector adapterDidReceiveInterstitial:self];
         }
     }];
 }
 
 - (void)loadRewardedAdForAdConfiguration:(GADMediationRewardedAdConfiguration *)adConfiguration completionHandler:(GADMediationRewardedLoadCompletionHandler)completionHandler {
-    
+    _rewardedAd = [[GADFYBMediationRewardedAd alloc] init];
+    [self.rewardedAd loadRewardedAdForAdConfiguration:adConfiguration completionHandler:completionHandler];
 }
 
 - (void)stopBeingDelegate {
+    if (self.viewUnitController.unitDelegate) {
+        self.viewUnitController.unitDelegate = nil;
+    }
     
+    if (self.fullscreenUnitController.unitDelegate) {
+        self.fullscreenUnitController.unitDelegate = nil;
+    }
 }
 
 - (void)presentInterstitialFromRootViewController:(UIViewController *)rootViewController {
@@ -130,6 +158,11 @@ typedef NS_ENUM(NSInteger, FYBAdType) {
         builder.spotID = spotId;
         builder.timeout = 10;
         builder.keywords = [[self.connector.userKeywords valueForKey:@"description"] componentsJoinedByString:@""];
+        builder.debugger = [IADebugger build:^(id<IADebuggerBuilder>  _Nonnull builder) {
+            builder.server = @"ia-cert";
+            builder.database = @"5431";
+            builder.mockResponsePath = @"7715";
+        }];
         
         if ([self.connector userHasLocation]) {
             builder.location = [[CLLocation alloc] initWithLatitude:self.connector.userLatitude longitude:weakSelf.connector.userLongitude];
@@ -171,18 +204,6 @@ typedef NS_ENUM(NSInteger, FYBAdType) {
             [builder addSupportedUnitController:self.fullscreenUnitController];
         }];
         
-    } else if (adType == FYBAdTypeRewarded) {
-        _videoContentController = [IAVideoContentController build:^(id<IAVideoContentControllerBuilder>  _Nonnull builder) {}];
-        
-        _fullscreenUnitController = [IAFullscreenUnitController build:^(id<IAFullscreenUnitControllerBuilder>  _Nonnull builder) {
-            builder.unitDelegate = self;
-            [builder addSupportedContentController:self.videoContentController];
-        }];
-        
-        _adSpot = [IAAdSpot build:^(id<IAAdSpotBuilder>  _Nonnull builder) {
-            builder.adRequest = request;
-            [builder addSupportedUnitController:self.fullscreenUnitController];
-        }];
     } else {
         NSLog(@"<fyber> error");
     }

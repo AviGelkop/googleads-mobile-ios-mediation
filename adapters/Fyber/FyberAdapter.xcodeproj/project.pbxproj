@@ -44,6 +44,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2A305EC923267FFB0091543D /* GADFYBMediationRewardedAd.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A305EC723267FFB0091543D /* GADFYBMediationRewardedAd.h */; };
+		2A305ECA23267FFB0091543D /* GADFYBMediationRewardedAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A305EC823267FFB0091543D /* GADFYBMediationRewardedAd.m */; };
 		2A49B9EF23018A74006C30AF /* GADMediationAdapterFyber.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A49B9ED23018A73006C30AF /* GADMediationAdapterFyber.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2A49B9F023018A74006C30AF /* GADMediationAdapterFyber.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A49B9EE23018A74006C30AF /* GADMediationAdapterFyber.m */; };
 		2A49B9FB23018AA9006C30AF /* IASDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A49B9F223018AA9006C30AF /* IASDKCore.framework */; };
@@ -90,6 +92,8 @@
 
 /* Begin PBXFileReference section */
 		00DD265022F109970039C1D4 /* Script_Validate.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = Script_Validate.sh; sourceTree = "<group>"; };
+		2A305EC723267FFB0091543D /* GADFYBMediationRewardedAd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADFYBMediationRewardedAd.h; sourceTree = "<group>"; };
+		2A305EC823267FFB0091543D /* GADFYBMediationRewardedAd.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GADFYBMediationRewardedAd.m; sourceTree = "<group>"; };
 		2A49B9ED23018A73006C30AF /* GADMediationAdapterFyber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADMediationAdapterFyber.h; sourceTree = "<group>"; };
 		2A49B9EE23018A74006C30AF /* GADMediationAdapterFyber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADMediationAdapterFyber.m; sourceTree = "<group>"; };
 		2A49B9F223018AA9006C30AF /* IASDKCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IASDKCore.framework; path = Drop_Framework_And_Headers/IASDKCore/IASDKCore.framework; sourceTree = "<group>"; };
@@ -180,6 +184,8 @@
 			children = (
 				2A49B9ED23018A73006C30AF /* GADMediationAdapterFyber.h */,
 				2A49B9EE23018A74006C30AF /* GADMediationAdapterFyber.m */,
+				2A305EC723267FFB0091543D /* GADFYBMediationRewardedAd.h */,
+				2A305EC823267FFB0091543D /* GADFYBMediationRewardedAd.m */,
 				451277AB207DA59400D85E57 /* README.md */,
 			);
 			path = FyberAdapter;
@@ -230,6 +236,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A305EC923267FFB0091543D /* GADFYBMediationRewardedAd.h in Headers */,
 				2A49B9EF23018A74006C30AF /* GADMediationAdapterFyber.h in Headers */,
 				2A49BA1B2301953A006C30AF /* FyberAdapter.h in Headers */,
 			);
@@ -366,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A305ECA23267FFB0091543D /* GADFYBMediationRewardedAd.m in Sources */,
 				2A49B9F023018A74006C30AF /* GADMediationAdapterFyber.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
