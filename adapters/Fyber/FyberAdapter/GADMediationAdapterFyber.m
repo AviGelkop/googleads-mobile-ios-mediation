@@ -10,15 +10,11 @@
 #import "GADMediationAdapterFyber.h"
 #import "GADFYBMediationRewardedAd.h"
 
+@import CoreLocation;
+@import GoogleMobileAds;
 @import IASDKCore;
 @import IASDKVideo;
 @import IASDKMRAID;
-@import CoreLocation;
-
-typedef NS_ENUM(NSInteger, FYBAdType) {
-  FYBAdTypeBanner = 0,
-  FYBAdTypeInterstitial = 1,
-};
 
 @interface GADMediationAdapterFyber () <GADMediationAdapter, GADMAdNetworkAdapter, IAUnitDelegate>
 
@@ -41,27 +37,12 @@ typedef NS_ENUM(NSInteger, FYBAdType) {
 #pragma mark - GADMediationAdapter
 
 + (GADVersionNumber)adSDKVersion {
-    NSString *VAMPVersion = [[IASDKCore sharedInstance] version];
-    NSArray <NSString *> *versionAsArray = [VAMPVersion componentsSeparatedByString:@"."];
-    GADVersionNumber version = {0};
-    
-    if (versionAsArray.count == 3) {
-        version.majorVersion = versionAsArray[0].integerValue;
-        version.minorVersion = versionAsArray[1].integerValue;
-        version.patchVersion = versionAsArray[2].integerValue;
-    }
-    return version;
+    return [GADMediationAdapterFyber versionFromString:[[IASDKCore sharedInstance] version]];
 }
 
 
 + (GADVersionNumber)version {
-    GADVersionNumber version = {0};
-    
-    version.majorVersion = 1;
-    version.minorVersion = 0;
-    version.patchVersion = 0;
-    
-    return version;
+    return [GADMediationAdapterFyber versionFromString:kFYBAdapterVersion];
 }
 
 + (void)setUpWithConfiguration:(nonnull GADMediationServerConfiguration *)configuration completionHandler:(nonnull GADMediationAdapterSetUpCompletionBlock)completionHandler {
@@ -86,7 +67,7 @@ typedef NS_ENUM(NSInteger, FYBAdType) {
 #pragma mark - GADMAdNetworkAdapter
 
 + (NSString *)adapterVersion {
-    return @"1.0.0";
+    return kFYBAdapterVersion;
 }
 
 + (Class<GADAdNetworkExtras>)networkExtrasClass {
@@ -106,7 +87,7 @@ typedef NS_ENUM(NSInteger, FYBAdType) {
 - (void)getBannerWithSize:(GADAdSize)adSize {
     NSString *spotId = [self.connector credentials][kFYBSpotID];
     
-    [self initSpot:spotId adType:FYBAdTypeBanner];
+    [self initBannerWithRequest:[self buildRequestWithSpotId:spotId]];
     [self.adSpot fetchAdWithCompletion:^(IAAdSpot * _Nullable adSpot, IAAdModel * _Nullable adModel, NSError * _Nullable error) {
         if (error) {
             [self.connector adapter:self didFailAd:error];
@@ -119,7 +100,7 @@ typedef NS_ENUM(NSInteger, FYBAdType) {
 - (void)getInterstitial {
     NSString *spotId = [self.connector credentials][kFYBSpotID];
     
-    [self initSpot:spotId adType:FYBAdTypeInterstitial];
+    [self initInterstitialWithRequest:[self buildRequestWithSpotId:spotId]];
     [self.adSpot fetchAdWithCompletion:^(IAAdSpot * _Nullable adSpot, IAAdModel * _Nullable adModel, NSError * _Nullable error) {
         if (error) {
             [self.connector adapter:self didFailAd:error];
@@ -150,9 +131,7 @@ typedef NS_ENUM(NSInteger, FYBAdType) {
 
 #pragma mark - Service
 
-- (void)initSpot:(NSString * _Nonnull)spotId adType:(FYBAdType)adType {
-    __weak typeof(self) weakSelf = self;
-    
+- (IAAdRequest * _Nonnull)buildRequestWithSpotId:(NSString *)spotId {
     IAAdRequest *request = [IAAdRequest build:^(id<IAAdRequestBuilder>  _Nonnull builder) {
         builder.useSecureConnections = NO;
         builder.spotID = spotId;
@@ -160,53 +139,65 @@ typedef NS_ENUM(NSInteger, FYBAdType) {
         builder.keywords = [[self.connector.userKeywords valueForKey:@"description"] componentsJoinedByString:@""];
         builder.debugger = [IADebugger build:^(id<IADebuggerBuilder>  _Nonnull builder) {
             builder.server = @"ia-cert";
-            builder.database = @"5431";
-            builder.mockResponsePath = @"7715";
+            builder.database = @"5430";
+            builder.mockResponsePath = @"mraidresize";
         }];
         
         if ([self.connector userHasLocation]) {
-            builder.location = [[CLLocation alloc] initWithLatitude:self.connector.userLatitude longitude:weakSelf.connector.userLongitude];
+            builder.location = [[CLLocation alloc] initWithLatitude:self.connector.userLatitude longitude:self.connector.userLongitude];
         }
     }];
     
-    if (adType == FYBAdTypeBanner) {
-        _MRAIDContentController = [IAMRAIDContentController build:^(id<IAMRAIDContentControllerBuilder>  _Nonnull builder) {}];
-        
-        _viewUnitController = [IAViewUnitController build:^(id<IAViewUnitControllerBuilder>  _Nonnull builder) {
-            builder.unitDelegate = self;
-            [builder addSupportedContentController:self.MRAIDContentController];
-        }];
-        
-        _adSpot = [IAAdSpot build:^(id<IAAdSpotBuilder>  _Nonnull builder) {
-            builder.adRequest = request;
-            [builder addSupportedUnitController:self.viewUnitController];
-        }];
-        
-    } else if (adType == FYBAdTypeInterstitial) {
-        _MRAIDContentController = [IAMRAIDContentController build:^(id<IAMRAIDContentControllerBuilder>  _Nonnull builder) {}];
-        _videoContentController = [IAVideoContentController build:^(id<IAVideoContentControllerBuilder>  _Nonnull builder) {}];
-        
-        _viewUnitController = [IAViewUnitController build:^(id<IAViewUnitControllerBuilder>  _Nonnull builder) {
-            builder.unitDelegate = self;
-            [builder addSupportedContentController:self.videoContentController];
-            [builder addSupportedContentController:self.MRAIDContentController];
-        }];
-        
-        _fullscreenUnitController = [IAFullscreenUnitController build:^(id<IAFullscreenUnitControllerBuilder>  _Nonnull builder) {
-            builder.unitDelegate = self;
-            [builder addSupportedContentController:self.videoContentController];
-            [builder addSupportedContentController:self.MRAIDContentController];
-        }];
-        
-        _adSpot = [IAAdSpot build:^(id<IAAdSpotBuilder>  _Nonnull builder) {
-            builder.adRequest = request;
-            [builder addSupportedUnitController:self.viewUnitController];
-            [builder addSupportedUnitController:self.fullscreenUnitController];
-        }];
-        
-    } else {
-        NSLog(@"<fyber> error");
+    return request;
+}
+
+- (void)initBannerWithRequest:(IAAdRequest * _Nonnull)request {
+    _MRAIDContentController = [IAMRAIDContentController build:^(id<IAMRAIDContentControllerBuilder>  _Nonnull builder) {}];
+    
+    _viewUnitController = [IAViewUnitController build:^(id<IAViewUnitControllerBuilder>  _Nonnull builder) {
+        builder.unitDelegate = self;
+        [builder addSupportedContentController:self.MRAIDContentController];
+    }];
+    
+    _adSpot = [IAAdSpot build:^(id<IAAdSpotBuilder>  _Nonnull builder) {
+        builder.adRequest = request;
+        [builder addSupportedUnitController:self.viewUnitController];
+    }];
+}
+
+- (void)initInterstitialWithRequest:(IAAdRequest * _Nonnull)request {
+    _MRAIDContentController = [IAMRAIDContentController build:^(id<IAMRAIDContentControllerBuilder>  _Nonnull builder) {}];
+    _videoContentController = [IAVideoContentController build:^(id<IAVideoContentControllerBuilder>  _Nonnull builder) {}];
+
+    _viewUnitController = [IAViewUnitController build:^(id<IAViewUnitControllerBuilder>  _Nonnull builder) {
+        builder.unitDelegate = self;
+        [builder addSupportedContentController:self.videoContentController];
+        [builder addSupportedContentController:self.MRAIDContentController];
+    }];
+
+    _fullscreenUnitController = [IAFullscreenUnitController build:^(id<IAFullscreenUnitControllerBuilder>  _Nonnull builder) {
+        builder.unitDelegate = self;
+        [builder addSupportedContentController:self.videoContentController];
+        [builder addSupportedContentController:self.MRAIDContentController];
+    }];
+
+    _adSpot = [IAAdSpot build:^(id<IAAdSpotBuilder>  _Nonnull builder) {
+        builder.adRequest = request;
+        [builder addSupportedUnitController:self.viewUnitController];
+        [builder addSupportedUnitController:self.fullscreenUnitController];
+    }];
+}
+
++ (GADVersionNumber)versionFromString:(NSString *)versionString {
+    NSArray <NSString *> *versionAsArray = [versionString componentsSeparatedByString:@"."];
+    GADVersionNumber version = {0};
+    
+    if (versionAsArray.count == 3) {
+        version.majorVersion = versionAsArray[0].integerValue;
+        version.minorVersion = versionAsArray[1].integerValue;
+        version.patchVersion = versionAsArray[2].integerValue;
     }
+    return version;
 }
 
 #pragma mark - IAUnitDelegate
