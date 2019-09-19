@@ -51,11 +51,6 @@
         builder.useSecureConnections = NO;
         builder.spotID = spotId;
         builder.timeout = 10;
-        builder.debugger = [IADebugger build:^(id<IADebuggerBuilder>  _Nonnull builder) {
-            builder.server = @"ia-cert";
-            builder.database = @"5431";
-            builder.mockResponsePath = @"7715";
-        }];
         
         if ([adConfiguration hasUserLocation]) {
             builder.location = [[CLLocation alloc] initWithLatitude:adConfiguration.userLatitude longitude:adConfiguration.userLongitude];
@@ -75,13 +70,16 @@
         builder.adRequest = request;
         [builder addSupportedUnitController:self.fullscreenUnitController];
     }];
-    
+    __weak typeof(self) weakSelf = self;
+
     [self.adSpot fetchAdWithCompletion:^(IAAdSpot * _Nullable adSpot, IAAdModel * _Nullable adModel, NSError * _Nullable error) {
+        __strong typeof(self) strongSelf = weakSelf;
+
         if (error) {
             completionHandler(nil, error);
         } else {
             if (completionHandler) {
-                self.delegate = completionHandler(self, nil);
+                strongSelf.delegate = completionHandler(strongSelf, nil);
             }
         }
     }];
@@ -124,7 +122,6 @@
 
 - (void)IAVideoCompleted:(IAVideoContentController * _Nullable)contentController {
     id<GADMediationRewardedAdEventDelegate> strongDelegate = self.delegate;
-
     GADAdReward *reward = [[GADAdReward alloc] initWithRewardType:@"" rewardAmount:[NSDecimalNumber decimalNumberWithString:@"1"]];
     
     [strongDelegate didEndVideo];

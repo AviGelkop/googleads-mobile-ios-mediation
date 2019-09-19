@@ -85,27 +85,33 @@
 }
 
 - (void)getBannerWithSize:(GADAdSize)adSize {
+    __weak typeof(self) weakSelf = self;
     NSString *spotId = [self.connector credentials][kFYBSpotID];
     
     [self initBannerWithRequest:[self buildRequestWithSpotId:spotId]];
     [self.adSpot fetchAdWithCompletion:^(IAAdSpot * _Nullable adSpot, IAAdModel * _Nullable adModel, NSError * _Nullable error) {
+        __strong typeof(self) strongSelf = weakSelf;
+
         if (error) {
-            [self.connector adapter:self didFailAd:error];
+            [strongSelf.connector adapter:strongSelf didFailAd:error];
         } else {
-            [self.connector adapter:self didReceiveAdView:self.viewUnitController.adView];
+            [strongSelf.connector adapter:strongSelf didReceiveAdView:strongSelf.viewUnitController.adView];
         }
     }];
 }
 
 - (void)getInterstitial {
+    __weak typeof(self) weakSelf = self;
     NSString *spotId = [self.connector credentials][kFYBSpotID];
     
     [self initInterstitialWithRequest:[self buildRequestWithSpotId:spotId]];
     [self.adSpot fetchAdWithCompletion:^(IAAdSpot * _Nullable adSpot, IAAdModel * _Nullable adModel, NSError * _Nullable error) {
+        __strong typeof(self) strongSelf = weakSelf;
+
         if (error) {
-            [self.connector adapter:self didFailAd:error];
+            [strongSelf.connector adapter:strongSelf didFailAd:error];
         } else {
-            [self.connector adapterDidReceiveInterstitial:self];
+            [strongSelf.connector adapterDidReceiveInterstitial:strongSelf];
         }
     }];
 }
@@ -137,11 +143,6 @@
         builder.spotID = spotId;
         builder.timeout = 10;
         builder.keywords = [[self.connector.userKeywords valueForKey:@"description"] componentsJoinedByString:@""];
-        builder.debugger = [IADebugger build:^(id<IADebuggerBuilder>  _Nonnull builder) {
-            builder.server = @"ia-cert";
-            builder.database = @"5430";
-            builder.mockResponsePath = @"mraidresize";
-        }];
         
         if ([self.connector userHasLocation]) {
             builder.location = [[CLLocation alloc] initWithLatitude:self.connector.userLatitude longitude:self.connector.userLongitude];
