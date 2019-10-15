@@ -59,6 +59,7 @@
 		2A49BA0323018AA9006C30AF /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A49B9FA23018AA9006C30AF /* GoogleMobileAds.framework */; };
 		2A49BA1B2301953A006C30AF /* FyberAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A49BA1A2301953A006C30AF /* FyberAdapter.h */; };
 		2A49BA2A2301A147006C30AF /* FyberAdapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A49BA292301A147006C30AF /* FyberAdapter.framework */; };
+		2AD230562355CDBF0067ABA1 /* GADMAdapterFyberConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AD230552355CDBF0067ABA1 /* GADMAdapterFyberConstants.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		2A49B9FA23018AA9006C30AF /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Drop_Framework_And_Headers/GoogleMobileAds.framework; sourceTree = "<group>"; };
 		2A49BA1A2301953A006C30AF /* FyberAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FyberAdapter.h; sourceTree = "<group>"; };
 		2A49BA292301A147006C30AF /* FyberAdapter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FyberAdapter.framework; path = Library/FyberAdapter.framework; sourceTree = "<group>"; };
+		2AD230552355CDBF0067ABA1 /* GADMAdapterFyberConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADMAdapterFyberConstants.h; sourceTree = "<group>"; };
 		4512777B207D92C100D85E57 /* libAdapter.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAdapter.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4512779E207D973000D85E57 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4512779F207D976300D85E57 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		4512777D207D92C100D85E57 /* FyberAdapter */ = {
 			isa = PBXGroup;
 			children = (
+				2AD230552355CDBF0067ABA1 /* GADMAdapterFyberConstants.h */,
 				2A49B9ED23018A73006C30AF /* GADMediationAdapterFyber.h */,
 				2A49B9EE23018A74006C30AF /* GADMediationAdapterFyber.m */,
 				2A305EC723267FFB0091543D /* GADFYBMediationRewardedAd.h */,
@@ -236,6 +239,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AD230562355CDBF0067ABA1 /* GADMAdapterFyberConstants.h in Headers */,
 				2A305EC923267FFB0091543D /* GADFYBMediationRewardedAd.h in Headers */,
 				2A49B9EF23018A74006C30AF /* GADMediationAdapterFyber.h in Headers */,
 				2A49BA1B2301953A006C30AF /* FyberAdapter.h in Headers */,

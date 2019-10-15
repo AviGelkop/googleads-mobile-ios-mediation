@@ -7,7 +7,7 @@
 //
 
 #import "GADFYBMediationRewardedAd.h"
-#import "GADMediationAdapterFyber.h"
+#import "GADMAdapterFyberConstants.h"
 
 @import IASDKCore;
 @import IASDKVideo;

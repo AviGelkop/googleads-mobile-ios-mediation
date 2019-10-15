@@ -2,7 +2,7 @@
 //  GADFYBMediationRewardedAd.h
 //  Adapter
 //
-//  Created by Avi Gelkop on 9/9/19.
+//  Created by Fyber on 9/9/19.
 //  Copyright © 2019 Google. All rights reserved.
 //
 

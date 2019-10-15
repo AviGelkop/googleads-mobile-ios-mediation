@@ -9,6 +9,7 @@
 
 #import "GADMediationAdapterFyber.h"
 #import "GADFYBMediationRewardedAd.h"
+#import "GADMAdapterFyberConstants.h"
 
 @import CoreLocation;
 @import GoogleMobileAds;
@@ -59,7 +60,7 @@
                 completionHandler(nil);
             });
         } else {
-            completionHandler([NSError errorWithDomain:[[NSBundle mainBundle] bundleIdentifier] code:0 userInfo:@{NSLocalizedDescriptionKey:@"Fyber marketplace could not initialized, app ID is unknown"}]);
+            completionHandler([NSError errorWithDomain:kGADMAdapterFyberErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey:@"Fyber marketplace could not initialized, app ID is unknown"}]);
         }
     }
 }
